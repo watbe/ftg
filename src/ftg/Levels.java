@@ -50,8 +50,12 @@ public class Levels {
 			String levelFileName = levelFileNamePrefix + i
 					+ levelFileNameSuffix;
 
-			URL url = WildWest.class.getResource(levelFileName);
-			
+            String path = "" + levelFileName;
+
+            Game.d(path);
+
+			URL url = WildWest.class.getResource(path);
+
 			if(url == null) {
 				Game.d(levelFileNamePrefix + i + levelFileNameSuffix
 						+ " does not exist");
@@ -61,7 +65,7 @@ public class Levels {
 			try {
 				existingConfig = new BufferedReader(new InputStreamReader(url.openStream()));
 			} catch (IOException e) {
-				
+
 			}
 
 			Scanner scanner = new Scanner(existingConfig);
@@ -123,7 +127,7 @@ public class Levels {
 
 		try {
 			existingConfig = new BufferedReader(new InputStreamReader(
-					WildWest.class.getResource(levelFileName).openStream()));
+					WildWest.class.getResource("/ftg/"+levelFileName).openStream()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

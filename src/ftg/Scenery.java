@@ -25,7 +25,7 @@ public class Scenery {
 	/**
 	 * This method
 	 * 
-	 * @param map
+	 * @param paintMap
 	 * @param g
 	 */
 
@@ -360,7 +360,6 @@ public class Scenery {
 	 * 
 	 * @param stringList
 	 *            An ArrayList of filenames
-	 * @param rotate
 	 * @return
 	 */
 	public static BufferedImage getImage(ArrayList<String> stringList) {

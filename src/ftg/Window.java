@@ -50,7 +50,7 @@ public class Window {
 		frame.setIgnoreRepaint(true);
 		frame.setVisible(true);
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(
-				Launcher.class.getResource("/game/player.png")));
+				Launcher.class.getResource("player.png")));
 		InputHandler input = new InputHandler();
 		frame.addKeyListener(input);
 		frame.setResizable(false);

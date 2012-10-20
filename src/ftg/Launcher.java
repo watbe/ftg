@@ -101,7 +101,7 @@ public class Launcher {
 				
 		frmRescueRiver = new JFrame();
 		frmRescueRiver.setIconImage(Toolkit.getDefaultToolkit().getImage(
-				Launcher.class.getResource("/game/player.png")));
+				Launcher.class.getResource("player.png")));
 		frmRescueRiver.setTitle("Rescue River");
 		frmRescueRiver.setResizable(false);
 		frmRescueRiver.setBounds(Config.getConfig("resX") / 2 - 200,
@@ -332,7 +332,7 @@ public class Launcher {
 		});
 
 		loadLevelBrief();
-		
+
 		Sound.playAudio(Sound.themeMusic);
 		
 	}

@@ -1,7 +1,5 @@
 package ftg;
 
-//import java.awt.Point;
-
 /**
  * WildWest - � 2011 Constructs Characters and has method for calculating
  * lineOfSight
@@ -29,19 +27,6 @@ public abstract class Body {
 
 	static Integer IDCount = 0;
 
-	/**
-	 * Constructs a Character
-	 * 
-	 * @param game
-	 * @param maxSpeed
-	 * @param startX
-	 * @param startY
-	 * @param charID
-	 * @param Acceleration
-	 * @param charType
-	 * @param vX
-	 * @param vY
-	 */
 	public Body(Game game) {
 
 		this.charID = IDCount;
@@ -238,21 +223,16 @@ public abstract class Body {
 	/**
 	 * This recursive function relocates (read: respawns) a body in a random
 	 * available and valid location where there is a path to the player.
-	 * 
-	 * @param body
+	 *
 	 * @param game
 	 */
 	public void relocate(Game game) {
 
 		Game.d("Attempting to relocate...");
 
-		//Player player = game.player;
 		RandomPoint randomPoint;
 
-		//Point playerPoint = new Point(player.xPos / game.mapPointSize,
-		//		player.yPos / game.mapPointSize);
-
-		randomPoint = new RandomPoint(game/*, playerPoint, 1*/);
+		randomPoint = new RandomPoint(game);
 
 		xPos = randomPoint.x * game.mapPointSize + game.mapPointSize / 2;
 		yPos = randomPoint.y * game.mapPointSize + game.mapPointSize / 2;

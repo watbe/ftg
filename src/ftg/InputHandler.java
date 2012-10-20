@@ -23,8 +23,6 @@ public class InputHandler implements KeyListener {
 		} else if (e.getKeyCode() == KeyEvent.VK_KP_DOWN
 				|| e.getKeyCode() == KeyEvent.VK_DOWN) {
 			Player.down = true;
-		} else if (e.getKeyCode() == KeyEvent.VK_R) {
-			Player.r = true;
 		} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			Game.spacePressed = true;
 			Player.usePickup = true;
@@ -55,8 +53,6 @@ public class InputHandler implements KeyListener {
 		} else if (e.getKeyCode() == KeyEvent.VK_KP_DOWN
 				|| e.getKeyCode() == KeyEvent.VK_DOWN) {
 			Player.down = false;
-		} else if (e.getKeyCode() == KeyEvent.VK_R) {
-			Player.r = false;
 		} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			Player.usePickup = false;
 			Game.spacePressed = false;

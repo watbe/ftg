@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 /* 
- * WildWest - 2011
+ * WildWest - � 2011
  * Map class
  * Generates maps and checks they are solvable.
  * Thomas Lillywhite
@@ -263,8 +263,10 @@ public class Map {
 	}
 
 	/**
-	 * Checks if a map is good based on two booleans
-	 *
+	 * Checks if a map is good based a path
+	 * 
+	 * @param path
+	 *            result of one bool
 	 * @return
 	 */
 	public boolean goodMap(boolean path) {

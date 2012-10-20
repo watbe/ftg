@@ -1,15 +1,6 @@
 package ftg;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Frame;
-import java.awt.Graphics2D;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.awt.RenderingHints;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
@@ -46,17 +37,28 @@ public class Window {
 				.getLocalGraphicsEnvironment();
 		GraphicsDevice device = env.getDefaultScreenDevice();
 		frame = new Frame("Wild West");
-		frame.setUndecorated(true);
+		//frame.setUndecorated(true);
 		frame.setIgnoreRepaint(true);
+
+        if(Config.getConfig("fullscreen") == 0) {
+            frame.setSize(new Dimension(800,600));
+            frame.setAlwaysOnTop(true);
+            frame.setAlwaysOnTop(false);
+        }
+        frame.setResizable(false);
+
 		frame.setVisible(true);
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(
 				Launcher.class.getResource("player.png")));
 		InputHandler input = new InputHandler();
 		frame.addKeyListener(input);
-		frame.setResizable(false);
 		frame.createBufferStrategy(2);
 		bufferStrategy = frame.getBufferStrategy();
-		device.setFullScreenWindow(frame);
+
+
+        if(Config.getConfig("fullscreen") == 1) {
+            device.setFullScreenWindow(frame);
+        }
 
 	}
 

@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -23,6 +24,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.Font;
 import javax.swing.JComboBox;
+import java.awt.Component;
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import java.awt.Insets;
@@ -42,8 +44,9 @@ public class Launcher {
 	static Levels levels;
 	Integer numberOfLevels;
 	private static JFrame frmRescueRiver;
+	private JCheckBox DebuggingMode;
 	static WildWest wildwest;
-	private JComboBox levelSelect;
+	private JComboBox<String> levelSelect;
 	private JTextPane levelBrief;
 	private ImageButton btnLaunchGame;
 	private JTextPane highScores;
@@ -280,20 +283,25 @@ public class Launcher {
 		levelBrief.setBounds(26, 322, 161, 171);
 		panel_2.add(levelBrief);
 
-		levelSelect = new JComboBox();
+		levelSelect = new JComboBox<String>();
 		levelSelect.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		levelSelect.setFont(new Font("Georgia", Font.PLAIN, 13));
 		levelSelect.setOpaque(false);
 		levelSelect.setBackground(Color.GREEN);
 		levelSelect.setBounds(145, 254, 227, 23);
-		levelSelect.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent evt) {
-				loadLevelBrief();
-			}
-		});
+		
 		for (int i = 0; i < levels.numberOfLevels; i++) {
 			levelSelect.addItem(Levels.getLevelName(i));
 		}
+		
+		levelSelect.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				loadLevelBrief();
+			}
+		});
+		
+		
 
 		panel_2.add(levelSelect);
 		
@@ -315,10 +323,25 @@ public class Launcher {
 		resetButton.setBackground(new Color(255, 255, 255, 0));
 		resetButton.setBounds(340, 297, 32, 14);
 		panel_2.add(resetButton);
+//		frmRescueRiver.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnLaunchGame, panel_2, DebuggingMode, label, label_1, btnResetSettings, btnExit}));
+//		frmRescueRiver.setFocusTraversalPolicy(new FocusTraversalOnArray(
+//				new Component[]{btnLaunchGame, frmRescueRiver.getContentPane(),
+//						panel_2, DebuggingMode, label, label_1,
+//						btnResetSettings, btnExit}));
 
 		btnResetSettings.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Config.resetConfig();
+			}
+		});
+		
+		frmRescueRiver.addMouseMotionListener(new MouseMotionListener() {
+			public void mouseMoved(MouseEvent e) {
+				loadLevelBrief();
+			}
+
+			@Override
+			public void mouseDragged(MouseEvent arg0) {
 			}
 		});
 
@@ -332,7 +355,7 @@ public class Launcher {
 		});
 
 		loadLevelBrief();
-
+		
 		Sound.playAudio(Sound.themeMusic);
 		
 	}
@@ -397,9 +420,13 @@ public class Launcher {
 		Toolkit tk = Toolkit.getDefaultToolkit();
 		
 		saveSettings();
-		
-		Config.setConfig("resX", (int) tk.getScreenSize().getWidth());
-		Config.setConfig("resY", (int) tk.getScreenSize().getHeight());
+
+        Config.setConfig("resX", 800);
+        Config.setConfig("resY", 600);
+        Config.setConfig("fullscreen", 0);
+
+//		Config.setConfig("resX", (int) tk.getScreenSize().getWidth());
+//		Config.setConfig("resY", (int) tk.getScreenSize().getHeight());
 		
 		wildwest = new WildWest();
 		frmRescueRiver.setVisible(false);

@@ -17,7 +17,7 @@ public class Game {
 	/**
 	 * Variables taken from Config
 	 */
-	static Boolean debug = (Config.getConfig("debug") == 1) ? true : false;
+	static Boolean debug = true; //(Config.getConfig("debug") == 0) ? true : false;
 
 	Integer mapPointSize; // The size of each square on the map.
 	Integer simplicity; // How often it tries to draw obstructions.

@@ -274,7 +274,7 @@ public class Scenery {
 		BufferedImage img = null;
 
 		try {
-			img = ImageIO.read(Launcher.class.getResource(filename + ".png"));
+			img = ImageIO.read(WildWest.class.getResource(filename + ".png"));
 		} catch (Exception e) {
 			Game.d("Error: " + filename + ".png does not exist!");
 			e.printStackTrace();
@@ -336,7 +336,7 @@ public class Scenery {
 		BufferedImage img = null;
 
 		try {
-			img = ImageIO.read(Launcher.class.getResource(filename + ".png"));
+			img = ImageIO.read(WildWest.class.getResource(filename + ".png"));
 		} catch (Exception e) {
 			Game.d("Error: " + filename + ".png does not exist!");
 			e.printStackTrace();

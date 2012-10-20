@@ -14,11 +14,11 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 /**
  * WildWest - � 2011 Contains everything for the sound effects
  * @author Thomas Lillywhite
- *
+ * 
  */
 public class Sound extends Thread implements Runnable {
-
-	//Music
+	
+	//Music 
 	static Sound themeMusic = new Sound((WildWest.class.getResource("Ballad of Serenity.wav")), false, true);
 	static Sound backgroundMusic = new Sound((WildWest.class.getResource("Big Bar Fight.wav")), false, true);
 	static Sound backgroundMusic2 = new Sound((WildWest.class.getResource("reavers.wav")), false, true);
@@ -41,11 +41,16 @@ public class Sound extends Thread implements Runnable {
 		this.url = url;
 		this.stop = stop;
 		this.sync = sync;
+		
+
 	}
 
 	URL url;
 	Boolean stop;
 	Boolean sync;
+	
+	
+
 
 	/**
 	 *Method to stream an audio file
@@ -103,16 +108,19 @@ public class Sound extends Thread implements Runnable {
 	 */
 	@Override
 	public void run() {
-
+		
+		
+		
 		if(sync){
 			synchronized (Sound.class){
-                try {
-                    streamAudio(url);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-		    }
-		} else {
+			try {
+				streamAudio(url);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		}
+		else{
 			try {
 				streamAudio(url);
 			} catch (Exception e) {
@@ -126,6 +134,7 @@ public class Sound extends Thread implements Runnable {
 	 */
 	public void stopAudio() {
 		stop = true;
+		
 	}
 	
 	/**
@@ -134,6 +143,7 @@ public class Sound extends Thread implements Runnable {
 	public static void playAudio(Sound s) {
 		Thread t = new Thread(s);
 		t.start();
+		
 	}
 	
 }
